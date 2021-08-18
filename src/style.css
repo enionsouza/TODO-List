@@ -1,23 +1,122 @@
-@font-face {
+/* @font-face {
   font-family: "Proxima Nova";
   font-style: normal;
   font-weight: normal;
   src: url("./fonts/proxima-nova-light.otf") format("opentype");
-}
+} */
 
 :root {
-  --font-family-sans-serif: "Proxima Nova", system-ui, -apple-system, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --primary-color: #1c78c0;
+  --font-family-sans-serif: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+  --primary-color: #061622;
   --secondary-color: #8ed6fb;
-  --background-color: #d5ebf6;
+  --border-color: #93989bbe;
+  --icons-color: #969899;
+  --background-color: #e6f0f5be;
 }
 
 body {
-  background-color: var(--background-color);
+  font-family: var(--font-family-sans-serif);
+  color: var(--primary-color);
 }
 
-.new-style {
-  color: var(--primary-color);
-  font-family: var(--font-family-sans-serif);
+h1 {
   text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-weight: 300;
+  font-style: oblique;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  padding-right: 5px;
+}
+
+#new-item {
+  flex-grow: 1;
+  padding: 15px 5px;
+  font-style: italic;
+  border: none;
+}
+
+#new-item-btn {
+  width: 20px;
+  background-image: url('./img/document-export.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  padding-right: 5px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  margin-right: -7px;
+  margin-bottom: 50px;
+}
+
+li {
+  display: flex;
+  border: 1px solid var(--border-color);
+  padding-left: 5px;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.description {
+  flex-grow: 1;
+  font-weight: 200;
+}
+
+.li-btn {
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  margin-right: 5px;
+  padding: 0;
+}
+
+.bin {
+  background-image: url('./img/recycle-bin-line.svg');
+  height: 24px;
+  width: 21px;
+}
+
+.v-dots {
+  background-image: url('./img/3-vertical-dots.svg');
+  height: 24px;
+  width: 5px;
+  margin-right: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.clear-completed {
+  display: block;
+  margin: 15px auto;
+  color: var(--border-color);
+}
+
+.clear-completed:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--primary-color);
 }
