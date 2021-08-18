@@ -33,23 +33,37 @@ class ToDo {
     list.innerHTML = '';
     for (const task of this.tasks) {
       list.innerHTML += `
-      <li>
-        ${task.description}
-      </li>
+        <li>
+          <input type="checkbox" id="check-${task.index}" class="checkbox">
+          <p class="description">${task.description}</p>
+          <button class="li-btn bin hidden" id="bin-${task.index}"></button>
+          <button class="li-btn v-dots" id="v-dots-${task.index}"></button>
+        </li>
+      `;
+    }
+    if (this.tasks) {
+      list.innerHTML += `
+        <li>
+          <a class="clear-completed">Clear all completed</a>
+        </li>
       `;
     }
   }
 }
 
 const myToDoList = new ToDo();
+
+// seed for the array of objects (tasks)
 if (localStorage.tasks === undefined) {
   myToDoList.addTask('My first task');
   myToDoList.addTask('My second task');
   myToDoList.addTask('My third task');
 }
 
+// render the array of objects
 window.onload = myToDoList.renderList.apply(myToDoList);
 
+// add functionality for adding new tasks
 const newItemBtn = document.getElementById('new-item-btn');
 newItemBtn.addEventListener('click', (e) => {
   e.preventDefault();
