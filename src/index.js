@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
-/* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
 
 import './style.css';
 import Task from './task';
@@ -61,7 +61,7 @@ function toggleCompleted(e) {
   myToDoList.tasks[index].completed = !myToDoList.tasks[index].completed;
   document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
   myToDoList.updateLocalStorage();
-  console.table(JSON.parse(localStorage.tasks));
+  // console.table(JSON.parse(localStorage.tasks));
 }
 
 // seed for the array of objects (tasks)
