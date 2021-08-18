@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
+/* eslint-disable no-console */
 /* eslint-disable no-use-before-define */
 
 import './style.css';
