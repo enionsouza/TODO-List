@@ -1,10 +1,44 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-console */
+
 import './style.css';
-import WebpackLogo from './img/webpack-logo.svg'
+import Task from './task';
+import ThreeVerticalDots from './img/3-vertical-dots.svg';
 
-const h1 = document.getElementsByTagName('h1')[0]
-h1.classList.add('new-style');
+class ToDo {
+  constructor() {
+    this.tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
+  }
 
-const logo = document.createElement('img');
-logo.src = WebpackLogo;
+  addTask(description) {
+    this.tasks.push(new Task(description, this.tasks.length));
+    this.updateLocalStorage();
+  }
 
-h1.appendChild(logo);
+  updateLocalStorage() {
+    localStorage.tasks = JSON.stringify(this.tasks);
+  }
+
+  renderList() {
+    const list = document.getElementById('my-list');
+    list.innerHTML = '';
+    for (const task of this.tasks) {
+      list.innerHTML += `
+      <li>
+        ${task.description}
+      </li>
+      `;
+    }
+  }
+}
+
+const myToDoList = new ToDo();
+if (localStorage.tasks === undefined) {
+  myToDoList.addTask('My first task');
+  myToDoList.addTask('My second task');
+  myToDoList.addTask('My third task');
+}
+
+myToDoList.renderList();
