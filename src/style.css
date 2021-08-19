@@ -83,6 +83,8 @@ li {
 .description {
   flex-grow: 1;
   font-weight: 200;
+  display: flex;
+  justify-content: space-between;
 }
 
 .li-btn {
@@ -97,6 +99,10 @@ li {
   background-image: url('./img/recycle-bin-line.svg');
   height: 24px;
   width: 21px;
+}
+
+.bin:hover {
+  cursor: pointer;
 }
 
 .v-dots {

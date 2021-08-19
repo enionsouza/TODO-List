@@ -16,6 +16,17 @@ export default class {
     }
   }
 
+  deleteTask(index) {
+    this.tasks.splice(index, 1);
+    let i = 0;
+    this.tasks.forEach((task) => {
+      task.index = i;
+      i += 1;
+    });
+    this.updateLocalStorage();
+    this.renderList();
+  }
+
   updateLocalStorage() {
     localStorage.tasks = JSON.stringify(this.tasks);
   }
@@ -27,7 +38,7 @@ export default class {
       list.innerHTML += `
         <li id="task-${task.index}">
           <input type="checkbox" class="checkbox" checked="${task.completed}">
-          <p class="description ${task.completed ? 'completed' : ''}" contenteditable="true">${task.description}</p>
+          <p class="description${task.completed ? ' completed' : ''}" contenteditable="true">${task.description}</p>
           <button class="li-btn bin hidden"></button>
           <button class="li-btn v-dots"></button>
         </li>
@@ -54,28 +65,34 @@ export default class {
       console.table(JSON.parse(localStorage.tasks));
     }
 
+    function toggleEditMode(parent) {
+      parent.classList.toggle('edit-mode');
+      parent.children[2].classList.toggle('hidden');
+      parent.children[3].classList.toggle('hidden');
+    }
+
     this.tasks.forEach((task) => {
-      // add event listeners for the checkboxes
+      // add event listeners for the checkboxes (completed indicator)
       const checkbox = document.getElementById(`task-${task.index}`).children[0];
       checkbox.addEventListener('change', toggleCompleted);
       checkbox.checked = task.completed;
 
-      // add event listeners for editing the task descriptions
+      // add event listeners for editing a task description
       const description = document.getElementById(`task-${task.index}`).children[1];
-      description.addEventListener('focusin', (e) => {
-        const parent = e.target.parentElement;
-        parent.classList.toggle('edit-mode');
-        parent.children[2].classList.toggle('hidden');
-        parent.children[3].classList.toggle('hidden');
+      description.addEventListener('focus', (e) => {
+        toggleEditMode(e.target.parentElement);
       });
-      description.addEventListener('focusout', (e) => {
-        const parent = e.target.parentElement;
-        parent.classList.toggle('edit-mode');
-        parent.children[2].classList.toggle('hidden');
-        parent.children[3].classList.toggle('hidden');
-        task.description = e.target.textContent;
-        obj.updateLocalStorage();
+      description.addEventListener('blur', () => {
+        setTimeout(() => {
+          toggleEditMode(description.parentElement);
+          task.description = description.textContent;
+          obj.updateLocalStorage();
+        }, 500);
       });
+
+      // add event listeners for deleting a task
+      const binBtn = document.getElementById(`task-${task.index}`).children[2];
+      binBtn.addEventListener('click', () => obj.deleteTask(task.index));
     });
   }
 }

@@ -5,9 +5,9 @@ const myToDoList = new ToDo();
 
 // seed for the array of objects (tasks)
 if (localStorage.tasks === undefined) {
-  myToDoList.addTask('My first task');
-  myToDoList.addTask('My second task');
-  myToDoList.addTask('My third task');
+  myToDoList.addTask('My first sample task');
+  myToDoList.addTask('My second sample task');
+  myToDoList.addTask('My third sample task');
 }
 
 // render the array of objects
