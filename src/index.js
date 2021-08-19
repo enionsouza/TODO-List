@@ -19,3 +19,10 @@ newItemBtn.addEventListener('click', (e) => {
   e.preventDefault();
   myToDoList.addTask.apply(myToDoList);
 });
+
+const title = document.getElementById('title');
+title.contentEditable = true;
+if (localStorage.title) title.innerHTML = localStorage.title;
+title.addEventListener('blur', () => {
+  localStorage.title = title.innerHTML;
+});

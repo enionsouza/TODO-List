@@ -16,8 +16,7 @@ export default class {
     }
   }
 
-  deleteTask(index) {
-    this.tasks.splice(index, 1);
+  updateIndexes() {
     let i = 0;
     this.tasks.forEach((task) => {
       task.index = i;
@@ -25,6 +24,16 @@ export default class {
     });
     this.updateLocalStorage();
     this.renderList();
+  }
+
+  deleteTask(index) {
+    this.tasks.splice(index, 1);
+    this.updateIndexes();
+  }
+
+  clearAllBtn() {
+    this.tasks = this.tasks.filter((task) => !task.completed);
+    this.updateIndexes();
   }
 
   updateLocalStorage() {
@@ -62,7 +71,7 @@ export default class {
       obj.tasks[index].completed = !obj.tasks[index].completed;
       document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
       obj.updateLocalStorage();
-      console.table(JSON.parse(localStorage.tasks));
+      // console.table(JSON.parse(localStorage.tasks));
     }
 
     function toggleEditMode(parent) {
@@ -87,12 +96,16 @@ export default class {
           toggleEditMode(description.parentElement);
           task.description = description.textContent;
           obj.updateLocalStorage();
-        }, 500);
+        }, 100);
       });
 
       // add event listeners for deleting a task
       const binBtn = document.getElementById(`task-${task.index}`).children[2];
       binBtn.addEventListener('click', () => obj.deleteTask(task.index));
     });
+
+    // add event for 'Clear all completed'
+    const clearAllBtn = document.querySelector('.clear-completed');
+    clearAllBtn.addEventListener('click', () => obj.clearAllBtn());
   }
 }
