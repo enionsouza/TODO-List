@@ -17,8 +17,12 @@
 
 <p align="center">
     Screenshot (TBA)
-    <!-- <img alt="Screenshot" src="./docs/Screenshot.png" width="700"> -->
+    <img alt="Screenshot" src="./docs/Screenshot.png" width="700">
 </p>
+
+## Live Demo
+
+A live version of this project can be found on [this link](https://raw.githack.com/enionsouza/TODO-List/feature/remove-task/dist/index.html).
 
 ## Built With
 
