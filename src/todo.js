@@ -21,23 +21,13 @@ export default class {
   }
 
   renderList() {
-    const obj = this;
-
-    function toggleCompleted(e) {
-      const index = e.target.parentElement.id.split('-')[1];
-      obj.tasks[index].completed = !obj.tasks[index].completed;
-      document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
-      obj.updateLocalStorage();
-      // console.table(JSON.parse(localStorage.tasks));
-    }
-
     const list = document.getElementById('my-list');
     list.innerHTML = '';
     this.tasks.forEach((task) => {
       list.innerHTML += `
         <li id="task-${task.index}">
           <input type="checkbox" class="checkbox" checked="${task.completed}">
-          <p class="description ${task.completed ? 'completed' : ''}">${task.description}</p>
+          <p class="description ${task.completed ? 'completed' : ''}" contenteditable="true">${task.description}</p>
           <button class="li-btn bin hidden"></button>
           <button class="li-btn v-dots"></button>
         </li>
@@ -50,10 +40,42 @@ export default class {
         </li>
       `;
     }
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    const obj = this;
+
+    function toggleCompleted(e) {
+      const index = e.target.parentElement.id.split('-')[1];
+      obj.tasks[index].completed = !obj.tasks[index].completed;
+      document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
+      obj.updateLocalStorage();
+      console.table(JSON.parse(localStorage.tasks));
+    }
+
     this.tasks.forEach((task) => {
+      // add event listeners for the checkboxes
       const checkbox = document.getElementById(`task-${task.index}`).children[0];
       checkbox.addEventListener('change', toggleCompleted);
       checkbox.checked = task.completed;
+
+      // add event listeners for editing the task descriptions
+      const description = document.getElementById(`task-${task.index}`).children[1];
+      description.addEventListener('focusin', (e) => {
+        const parent = e.target.parentElement;
+        parent.classList.toggle('edit-mode');
+        parent.children[2].classList.toggle('hidden');
+        parent.children[3].classList.toggle('hidden');
+      });
+      description.addEventListener('focusout', (e) => {
+        const parent = e.target.parentElement;
+        parent.classList.toggle('edit-mode');
+        parent.children[2].classList.toggle('hidden');
+        parent.children[3].classList.toggle('hidden');
+        task.description = e.target.textContent;
+        obj.updateLocalStorage();
+      });
     });
   }
 }

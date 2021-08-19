@@ -12,6 +12,7 @@
   --border-color: #93989bbe;
   --icons-color: #969899;
   --background-color: #e6f0f5be;
+  --edit-color: #fffeca;
 }
 
 body {
@@ -113,6 +114,10 @@ li {
   text-decoration: line-through;
   font-style: italic;
   color: var(--icons-color);
+}
+
+.edit-mode {
+  background-color: var(--edit-color);
 }
 
 .clear-completed {
