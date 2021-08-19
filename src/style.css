@@ -109,6 +109,12 @@ li {
   display: none;
 }
 
+.completed {
+  text-decoration: line-through;
+  font-style: italic;
+  color: var(--icons-color);
+}
+
 .clear-completed {
   display: block;
   margin: 15px auto;

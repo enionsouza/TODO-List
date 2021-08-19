@@ -2,15 +2,14 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
+/* eslint-disable no-use-before-define */
 
 import './style.css';
 import Task from './task';
-import ThreeVerticalDots from './img/3-vertical-dots.svg';
 
 class ToDo {
   constructor() {
     this.tasks = localStorage.tasks ? JSON.parse(localStorage.tasks) : [];
-    this.renderList();
   }
 
   addTask(description = '') {
@@ -33,11 +32,11 @@ class ToDo {
     list.innerHTML = '';
     for (const task of this.tasks) {
       list.innerHTML += `
-        <li>
-          <input type="checkbox" id="check-${task.index}" class="checkbox">
-          <p class="description">${task.description}</p>
-          <button class="li-btn bin hidden" id="bin-${task.index}"></button>
-          <button class="li-btn v-dots" id="v-dots-${task.index}"></button>
+        <li id="task-${task.index}">
+          <input type="checkbox" class="checkbox" checked="${task.completed}">
+          <p class="description ${task.completed ? 'completed' : ''}">${task.description}</p>
+          <button class="li-btn bin hidden"></button>
+          <button class="li-btn v-dots"></button>
         </li>
       `;
     }
@@ -48,10 +47,23 @@ class ToDo {
         </li>
       `;
     }
+    for (const task of this.tasks) {
+      const checkbox = document.getElementById(`task-${task.index}`).children[0];
+      checkbox.addEventListener('change', toggleCompleted);
+      checkbox.checked = task.completed;
+    }
   }
 }
 
 const myToDoList = new ToDo();
+
+function toggleCompleted(e) {
+  const index = e.target.parentElement.id.split('-')[1];
+  myToDoList.tasks[index].completed = !myToDoList.tasks[index].completed;
+  document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
+  myToDoList.updateLocalStorage();
+  // console.table(JSON.parse(localStorage.tasks));
+}
 
 // seed for the array of objects (tasks)
 if (localStorage.tasks === undefined) {

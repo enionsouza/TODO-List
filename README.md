@@ -27,22 +27,35 @@
 
 ## Getting Started
 
-To run this project, you only need a computer with a browser (like Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari, etc.) installed, and follow these steps:
+### Prerequisites
 
-1. In your terminal, in the folder of your preference, type the following bash command to clone this repository:
+For this project, the following environment should be previously installed on your machine:
+
+- Node 14.17.0
+- git
+
+### Setup
+
+In your terminal, in the folder of your preference, type the following bash command to clone this repository:
 
 ```sh
 git clone git@github.com:enionsouza/TODO-List.git
 ```
+### Install
 
-2. Now that you have already cloned the repo run the following commands to get the project up and running:
+Now that you have already cloned the repo run the following commands to get the project up and running:
 ```sh
 cd TODO-List
 npm install
 npm start
 ```
+### Executing
 
-3. Now, you can start editing this template from the files provided in the `/src` folder. All the changes will be automatically updated on your local server on http://localhost:8080/. You can stop your local server at any time hitting `<Ctrl> + C` on your keyboard.
+Now, you can start editing this template from the files provided in the `/src` folder. All the changes will be automatically updated on your local server on http://localhost:8080/. You can stop your local server at any time hitting `<Ctrl> + C` on your keyboard.
+
+### Alternative
+
+As an alternative to the steps mentioned above, you can simply go the the `/dist` folder and open `index.html`, on the browser of your preference.
 
 ## Author
 
