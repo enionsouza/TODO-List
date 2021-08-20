@@ -83,8 +83,6 @@ li {
 .description {
   flex-grow: 1;
   font-weight: 200;
-  display: flex;
-  justify-content: space-between;
 }
 
 .li-btn {

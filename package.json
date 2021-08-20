@@ -1,5 +1,5 @@
 {
-  "name": "webpack-exercise",
+  "name": "todo-list",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enionsouza/webpack-exercise.git"
+    "url": "git+https://github.com/enionsouza/TODO-List.git"
   },
   "keywords": [],
   "author": "Enio N. de Souza",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enionsouza/webpack-exercise/issues"
+    "url": "https://github.com/enionsouza/TODO-List/issues"
   },
-  "homepage": "https://github.com/enionsouza/webpack-exercise#readme",
+  "homepage": "https://github.com/enionsouza/TODO-List#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.2.0",
