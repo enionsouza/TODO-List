@@ -16,7 +16,6 @@
 # A Simple To-Do List
 
 <p align="center">
-    Screenshot (TBA)
     <img alt="Screenshot" src="./docs/Screenshot.png" width="700">
 </p>
 
