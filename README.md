@@ -2,11 +2,11 @@
   <a href="https://www.microverse.org/">
     <img alt="Microverse" src="https://img.shields.io/badge/-Microverse-blueviolet?style=flat-square">
   </a>
-  <a href="https://github.com/enionsouza/TODO-List/blob/main/LICENSE">
+  <a href="https://github.com/enionsouza/TODO-List/blob/develop/LICENSE">
     <img alt="MIT Licensed" src="https://img.shields.io/github/license/enionsouza/TODO-List?style=flat-square">
   </a>
   <a href="https://github.com/enionsouza/TODO-List">
-    <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/enionsouza/TODO-List/main?color=blue&style=flat-square">
+    <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/enionsouza/TODO-List/develop?color=blue&style=flat-square">
   </a>
   <a href="https://github.com/enionsouza/TODO-List">
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/enionsouza/TODO-List?color=cyan&label=%E2%98%85%20stars%20&style=flat-square">
@@ -35,7 +35,7 @@ A live version of this project can be found on [this link](https://raw.githack.c
 For this project, the following environment should be previously installed on your machine:
 
 - Node 14.17.0
-- git
+- Git
 
 ### Setup
 
