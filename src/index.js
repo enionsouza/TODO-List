@@ -1,5 +1,6 @@
 import './style.css';
 import ToDo from './todo';
+import allowNewline from './allow-newline';
 
 const myToDoList = new ToDo();
 
@@ -24,5 +25,5 @@ const title = document.getElementById('title');
 title.contentEditable = true;
 if (localStorage.title) title.innerHTML = localStorage.title;
 title.addEventListener('blur', () => {
-  localStorage.title = title.innerHTML;
+  localStorage.title = allowNewline(title.innerHTML, 'h2');
 });

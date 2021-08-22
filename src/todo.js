@@ -1,4 +1,5 @@
 import Task from './task';
+import allowNewline from './allow-newline';
 
 export default class {
   constructor() {
@@ -47,7 +48,7 @@ export default class {
       list.innerHTML += `
         <li id="task-${task.index}">
           <input type="checkbox" class="checkbox" checked="${task.completed}">
-          <p class="description${task.completed ? ' completed' : ''}" contenteditable="true">${task.description}</p>
+          <div class="description${task.completed ? ' completed' : ''}" contenteditable="true">${task.description}</div>
           <button class="li-btn bin hidden"></button>
           <button class="li-btn v-dots"></button>
         </li>
@@ -94,7 +95,7 @@ export default class {
       description.addEventListener('blur', () => {
         setTimeout(() => {
           toggleEditMode(description.parentElement);
-          task.description = description.textContent;
+          task.description = allowNewline(description.innerHTML, 'p');
           obj.updateLocalStorage();
         }, 100);
       });
