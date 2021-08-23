@@ -25,5 +25,5 @@ const title = document.getElementById('title');
 title.contentEditable = true;
 if (localStorage.title) title.innerHTML = localStorage.title;
 title.addEventListener('blur', () => {
-  localStorage.title = allowNewline(title.innerHTML, 'h2');
+  localStorage.title = allowNewline(title.innerHTML);
 });

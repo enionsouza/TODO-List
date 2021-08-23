@@ -83,8 +83,12 @@ li {
 .description {
   flex-grow: 1;
   font-weight: 200;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dragging {
+  background-color: var(--edit-color);
 }
 
 .li-btn {
@@ -110,6 +114,7 @@ li {
   height: 24px;
   width: 5px;
   margin-right: 12px;
+  cursor: move;
 }
 
 .hidden {

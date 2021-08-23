@@ -81,6 +81,46 @@ export default class {
       parent.children[3].classList.toggle('hidden');
     }
 
+    function dragTask(index) {
+      const task = document.getElementById(`task-${index}`);
+      task.draggable = true;
+      task.addEventListener('dragstart', () => {
+        task.classList.add('dragging');
+      });
+      task.addEventListener('dragend', () => {
+        task.classList.remove('dragging');
+      });
+    }
+
+    /* eslint-disable no-restricted-syntax, eqeqeq */
+    function dropTask(index) {
+      const task = document.getElementById(`task-${index}`);
+      task.draggable = false;
+      const list = document.getElementById('my-list');
+      const previousIndex = task.id.split('-')[1];
+      let newIndex;
+      let counter = 0;
+      for (const listItem of list.children) {
+        if (listItem.id.split('-')[1] == previousIndex) newIndex = counter;
+        counter += 1;
+      };
+      const movedTask = obj.tasks.splice(previousIndex, 1)[0];
+      obj.tasks.splice(newIndex, 0, movedTask);
+      obj.updateIndexes();
+    }
+    /* eslint-enable no-restricted-syntax, eqeqeq */
+
+    function moveTask(y) {
+      const list = document.getElementById('my-list');
+      const otherTasks = [...list.querySelectorAll('li:not(.dragging):not(.clear-completed)')];
+      return otherTasks.reduce((closest, otherTask) => {
+        const box = otherTask.getBoundingClientRect();
+        const offset = y - box.top - (box.height / 2);
+        if (offset < 0 && offset > closest.offset) return { offset, nextTask: otherTask };
+        return closest;
+      }, { offset: Number.NEGATIVE_INFINITY }).nextTask;
+    }
+
     this.tasks.forEach((task) => {
       // add event listeners for the checkboxes (completed indicator)
       const checkbox = document.getElementById(`task-${task.index}`).children[0];
@@ -95,7 +135,7 @@ export default class {
       description.addEventListener('blur', () => {
         setTimeout(() => {
           toggleEditMode(description.parentElement);
-          task.description = allowNewline(description.innerHTML, 'p');
+          task.description = allowNewline(description.innerHTML);
           obj.updateLocalStorage();
         }, 100);
       });
@@ -103,10 +143,28 @@ export default class {
       // add event listeners for deleting a task
       const binBtn = document.getElementById(`task-${task.index}`).children[2];
       binBtn.addEventListener('click', () => obj.deleteTask(task.index));
+
+      // add event for 'Drag and Drop List items'
+      const dragBtn = document.getElementById(`task-${task.index}`).children[3];
+      dragBtn.addEventListener('mousedown', () => dragTask(task.index));
+      document.getElementById(`task-${task.index}`).addEventListener('dragend', () => dropTask(task.index));
     });
 
     // add event for 'Clear all completed'
     const clearAllBtn = document.querySelector('.clear-completed');
     clearAllBtn.addEventListener('click', () => obj.clearAllBtn());
+
+    // add event for 'Dragging over the list os tasks'
+    const list = document.getElementById('my-list');
+    list.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterTask = moveTask(e.clientY);
+      const movingTask = document.querySelector('.dragging');
+      if (afterTask) {
+        list.insertBefore(movingTask, afterTask);
+      } else {
+        list.insertBefore(movingTask, document.querySelector('.clear-completed'));
+      }
+    });
   }
 }
