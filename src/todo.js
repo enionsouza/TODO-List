@@ -103,7 +103,7 @@ export default class {
       for (const listItem of list.children) {
         if (listItem.id.split('-')[1] == previousIndex) newIndex = counter;
         counter += 1;
-      };
+      }
       const movedTask = obj.tasks.splice(previousIndex, 1)[0];
       obj.tasks.splice(newIndex, 0, movedTask);
       obj.updateIndexes();

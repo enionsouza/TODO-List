@@ -21,7 +21,7 @@
 
 ## Live Demo
 
-A live version of this project can be found on [this link](https://raw.githack.com/enionsouza/TODO-List/develop/dist/index.html).
+A live version of this project can be found on [this link](https://enionsouza.github.io/TODO-List/dist/index.html) or on [this alternative link](https://raw.githack.com/enionsouza/TODO-List/develop/dist/index.html).
 
 ## Built With
 
