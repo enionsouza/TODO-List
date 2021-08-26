@@ -143,7 +143,7 @@ export default class {
 
       // add event for 'Drag and Drop List items'
       const dragBtn = document.getElementById(`task-${task.index}`).children[3];
-      const listItem = document.getElementById(`task-${task.index}`)
+      const listItem = document.getElementById(`task-${task.index}`);
       dragBtn.addEventListener('mousedown', () => dragTask(listItem));
       listItem.addEventListener('dragend', () => dropTask(listItem));
     });
