@@ -4,8 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles",
-    "watch-test": "jest --watch --detectOpenHandles",
+    "test": "jest --verbose --coverage --detectOpenHandles",
+    "watch-test": "jest --verbose --watch --detectOpenHandles",
     "build": "webpack",
     "start": "webpack serve --open"
   },
