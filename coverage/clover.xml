@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1629982172934" clover="3.2.0">
-  <project timestamp="1629982172934" name="All files">
-    <metrics statements="90" coveredstatements="37" conditionals="25" coveredconditionals="7" methods="30" coveredmethods="8" elements="145" coveredelements="52" complexity="0" loc="90" ncloc="90" packages="1" files="3" classes="3"/>
-    <file name="allow-newline.js" path="/home/enionsouza/02-Estudo/JavaScript/TODO-List/src/allow-newline.js">
+<coverage generated="1629983416361" clover="3.2.0">
+  <project timestamp="1629983416361" name="All files">
+    <metrics statements="90" coveredstatements="37" conditionals="25" coveredconditionals="9" methods="30" coveredmethods="8" elements="145" coveredelements="54" complexity="0" loc="90" ncloc="90" packages="1" files="3" classes="3"/>
+    <file name="allow-newline.js" path="C:\Users\Ntwali\Documents\microverse\TODO-List\src\allow-newline.js">
       <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="3" count="0" type="stmt"/>
       <line num="5" count="0" type="stmt"/>
     </file>
-    <file name="task.js" path="/home/enionsouza/02-Estudo/JavaScript/TODO-List/src/task.js">
+    <file name="task.js" path="C:\Users\Ntwali\Documents\microverse\TODO-List\src\task.js">
       <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
     </file>
-    <file name="todo.js" path="/home/enionsouza/02-Estudo/JavaScript/TODO-List/src/todo.js">
-      <metrics statements="84" coveredstatements="34" conditionals="21" coveredconditionals="6" methods="28" coveredmethods="7"/>
-      <line num="6" count="2" type="cond" truecount="1" falsecount="1"/>
-      <line num="10" count="1" type="stmt"/>
-      <line num="11" count="1" type="cond" truecount="2" falsecount="2"/>
+    <file name="todo.js" path="C:\Users\Ntwali\Documents\microverse\TODO-List\src\todo.js">
+      <metrics statements="84" coveredstatements="34" conditionals="21" coveredconditionals="8" methods="28" coveredmethods="7"/>
+      <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="cond" truecount="4" falsecount="0"/>
       <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
       <line num="13" count="1" type="stmt"/>
       <line num="14" count="1" type="stmt"/>
