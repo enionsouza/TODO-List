@@ -12,9 +12,13 @@ describe('Editing a task description', () => {
     await page.click('input[name=new-item]');
     await page.type('input[name=new-item]', 'New task for testing!');
     await page.click('input[name=new-item-btn]');
-    expect(true).toBe(true);
+    await page.click('li:nth-last-child(2)>div');
+    await page.type('li:nth-last-child(2)>div', ' Editing a task');
+    await page.click('h1');
+    const lastAddedTask = await page.$eval('li:nth-last-child(2)>div', (el) => el.innerHTML);
+    expect(lastAddedTask).toBe('New task for testing! Editing a task');
     setTimeout(() => {
-      browser.close()
+      browser.close();
     }, 2000);
   }, 1000000000);
 });
