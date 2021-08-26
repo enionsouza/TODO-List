@@ -72,7 +72,6 @@ export default class {
       obj.tasks[index].completed = !obj.tasks[index].completed;
       document.getElementById(`task-${index}`).children[1].classList.toggle('completed');
       obj.updateLocalStorage();
-      // console.table(JSON.parse(localStorage.tasks));
     }
 
     function toggleEditMode(parent) {
@@ -81,8 +80,7 @@ export default class {
       parent.children[3].classList.toggle('hidden');
     }
 
-    function dragTask(index) {
-      const task = document.getElementById(`task-${index}`);
+    function dragTask(task) {
       task.draggable = true;
       task.addEventListener('dragstart', () => {
         task.classList.add('dragging');
@@ -93,8 +91,7 @@ export default class {
     }
 
     /* eslint-disable no-restricted-syntax, eqeqeq */
-    function dropTask(index) {
-      const task = document.getElementById(`task-${index}`);
+    function dropTask(task) {
       task.draggable = false;
       const list = document.getElementById('my-list');
       const previousIndex = task.id.split('-')[1];
@@ -146,8 +143,9 @@ export default class {
 
       // add event for 'Drag and Drop List items'
       const dragBtn = document.getElementById(`task-${task.index}`).children[3];
-      dragBtn.addEventListener('mousedown', () => dragTask(task.index));
-      document.getElementById(`task-${task.index}`).addEventListener('dragend', () => dropTask(task.index));
+      const listItem = document.getElementById(`task-${task.index}`);
+      dragBtn.addEventListener('mousedown', () => dragTask(listItem));
+      listItem.addEventListener('dragend', () => dropTask(listItem));
     });
 
     // add event for 'Clear all completed'

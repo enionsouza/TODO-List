@@ -60,13 +60,29 @@ Now, you can start editing this template from the files provided in the `/src` f
 
 As an alternative to the steps mentioned above, you can simply go the the `/dist` folder and open `index.html`, on the browser of your preference.
 
-## Author
+### Tests
+
+We have implemented tests for addTask() and deleteTask() methods in `./src/spec/todo.test.js`. You can run them using the following command:
+
+```sh
+npm test
+```
+
+Additionally, you can run `npm run watch-test` to watch any new test modification as you save them.
+
+## Authors
 
 👤 **Ênio Neves de Souza**
 
 - GitHub: [@enionsouza](https://github.com/enionsouza)
 - Twitter: [@enionsouza](https://twitter.com/enionsouza)
 - LinkedIn: [Enio Neves de Souza](https://www.linkedin.com/in/enio-neves-de-souza/)
+
+👤 **KARANGWA Ntwali Josue**
+
+- GitHub: [@githubhandle](https://github.com/Ntwali-Josue)
+- Twitter: [@twitterhandle](https://twitter.com/JosueNtwali)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/karangwa)
 
 ## 🤝 Contributing
 
