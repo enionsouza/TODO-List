@@ -3,14 +3,74 @@
 */
 
 import ToDo from '../todo';
+import allowNewline from '../allow-newline';
 
 describe('Editing a task description', () => {
-  test.skip('should permit the edition of an existing task', () => {
+  const myToDoListMock = new ToDo();
+
+  beforeEach(() => {
+    global.localStorage = {};
+    document.body.innerHTML = `
+    <h1>A simple list app that is always there for you</h1>
+    <div class="container">
+      <h2 title="Demo" id="title">Demo</h2>
+      <form>
+        <input type="text" name="new-item" id="new-item" placeholder="Add to your list...">
+        <input type="submit" name="new-item-btn" id="new-item-btn" value="" title="Click this or press <ENTER> to Submit">
+      </form>
+      <ul id="my-list">
+      </ul>
+    </div>
+  `;
+  });
+
+  test('should permit the edition of an existing task', () => {
+    const toggleEditModeMock = jest.fn((parent) => {
+      parent.classList.toggle('edit-mode');
+      parent.children[2].classList.toggle('hidden');
+      parent.children[3].classList.toggle('hidden');
+    });
+
+    const blurEventMock = jest.fn((description, task) => {
+      toggleEditModeMock(description.parentElement);
+      task.description = allowNewline(description.innerHTML);
+      myToDoListMock.updateLocalStorage();
+    });
+
+    myToDoListMock.tasks = [{
+      description: 'My first incomplete task',
+      completed: false,
+      index: 0,
+    },
+    {
+      description: 'My first complete task',
+      completed: true,
+      index: 1,
+    },
+    {
+      description: 'My second incomplete task',
+      completed: false,
+      index: 2,
+    },
+    {
+      description: 'My second complete task',
+      completed: true,
+      index: 3,
+    }];
+
+    myToDoListMock.renderList();
+    const editingTaskIndex = 0;
+    const description = document.getElementById(`task-${editingTaskIndex}`).children[1];
+    toggleEditModeMock(description.parentElement);
+    expect(description.parentElement.classList).toContain('edit-mode');
+    description.innerHTML += ' - editing!';
+    blurEventMock(description, myToDoListMock.tasks[editingTaskIndex]);
+    expect(myToDoListMock.tasks[editingTaskIndex].description).toBe('My first incomplete task - editing!');
+  });
 });
 
 describe('update Completed status', () => {
-  test.skip('should update an item\'s \'completed\' status', () => {
-
+  test.skip('should update an item\'s \'completed\' status', () => {});
 });
 
 describe('clearAll completed', () => {
