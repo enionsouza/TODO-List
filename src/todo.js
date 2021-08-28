@@ -18,10 +18,8 @@ export default class {
   }
 
   updateIndexes() {
-    let i = 0;
-    this.tasks.forEach((task) => {
-      task.index = i;
-      i += 1;
+    this.tasks.forEach((task, index) => {
+      task.index = index;
     });
     this.updateLocalStorage();
     this.renderList();
